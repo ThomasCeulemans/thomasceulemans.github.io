@@ -3,7 +3,7 @@ layout: page
 title: projects
 permalink: /projects/
 description: A growing collection of your cool projects.
-nav: true
+nav: false #maybe, I will add some things later here; disable for now
 nav_order: 2
 display_categories: [work, fun]
 horizontal: false

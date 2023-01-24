@@ -1,6 +1,5 @@
-"AJP":
-  url: https://aapt.scitation.org/journal/ajp
-  color: "#00369f"
+"MNRAS":
+  url: https://academic.oup.com/mnras
 
-"PhysRev":
-  url: https://journals.aps.org/
+"JOSS":
+  url: https://joss.theoj.org/

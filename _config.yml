@@ -7,6 +7,7 @@ first_name: Thomas
 #middle_name:
 last_name: Ceulemans
 email: thomas.ceulemans@kuleuven.be
+google_search_console: GLPyZmL_msyf6GlSSTkLaLNfuDCrBasm5CHUiSNoQuU
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 footer_text: >

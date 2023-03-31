@@ -5,6 +5,7 @@ title: repositories
 description: A collection of the projects I am working on.
 nav: true
 nav_order: 3
+sitemap: true
 ---
 
 ## GitHub users

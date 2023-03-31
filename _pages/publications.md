@@ -7,6 +7,7 @@ pub_years: [2023, 2022]
 talk_years: [2023]
 nav: true
 nav_order: 1
+sitemap: true
 ---
 <!-- _pages/publications.md -->
 <div class="publications">

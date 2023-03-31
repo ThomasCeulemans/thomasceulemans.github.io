@@ -16,6 +16,7 @@ profile:
 news: false  # includes a list of news items; err, no interesting news to include; is more for announcements
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
+sitemap: true
 ---
 
 I am Thomas Ceulemans, a Phd student in the group lead by [Prof. Leen Decin](https://fys.kuleuven.be/ster/staff/senior-staff/leen-decin) at the [Institute of Astronomy](https://fys.kuleuven.be/ster) at [KU Leuven](https://www.kuleuven.be/kuleuven/).

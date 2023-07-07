@@ -28,5 +28,13 @@ sitemap: true
   {% bibliography -f talks -q @*[year={{y}}]* %}
 {% endfor %}
 
+<br>
+<h1>posters</h1>
+
+{%- for y in page.talk_years %}
+  <h2 class="year">{{y}}</h2>
+  {% bibliography -f posters -q @*[year={{y}}]* %}
+{% endfor %}
+
 
 </div>

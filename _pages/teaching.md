@@ -1,13 +1,36 @@
 ---
-sitemap: false
+sitemap: true
 layout: page
 permalink: /teaching/
 title: teaching
-description: Materials for courses you taught. Replace this text with your description.
-nav: false # TODO: update later, as only a bachelor project is not yet interesting enough
+description: Contributions to education at KU Leuven
+nav: true
 nav_order: 5
+teaching_yml: ../_data/teaching.yml
 ---
 
-For now, this page is assumed to be a static description of your courses. You can convert it to a collection similar to `_projects/` so that you can have a dedicated page for each course.
+<!-- _pages/teaching.md -->
 
-Organize your courses by years, topics, or universities, however you like!
+## Theses
+{% if site.data.teaching.theses %}
+<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
+  {% for thesis in site.data.teaching.theses %}
+    <br> {{thesis}} <br/>
+  {% endfor %}
+</div>
+{% endif %}
+
+---
+
+## Teaching assistent
+
+{% if site.data.teaching.TA %}
+<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
+  {% for course in site.data.teaching.TA %}
+    <br> {{course}} <br/>
+  {% endfor %}
+</div>
+{% endif %}
+
+
+

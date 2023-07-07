@@ -1,0 +1,327 @@
+.checkerboard {
+    background-color: #aaa;
+    background-image: conic-gradient(white 90deg, #aaa 90deg, #aaa 180deg, white 179deg, white 270deg, #aaa 270deg);
+    background-size: 16px 16px;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #1e1e1e;
+    z-index: 99;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: white;
+    font-size: 30px;
+}
+
+.button {
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn-txt {
+    --btn-background: white;
+    --btn-color: var(--color-prim);
+    background-color: var(--btn-background);
+    padding: .2em 1em;
+    color: var(--btn-color);
+    border: 1px solid var(--btn-color);
+    transition: .3s;
+    cursor: pointer;
+}
+
+.btn-txt-single {
+    justify-self: start;
+}
+
+.btn-txt:hover,
+.btn-select {
+    background-color: var(--btn-color);
+    color: var(--btn-background);
+}
+
+.btn-select {
+    cursor: auto;
+}
+
+.btn-inline {
+    --btn-background: var(--color-bg);
+    --btn-color: var(--color-txt);
+    background-color: var(--btn-background);
+    color: var(--btn-color);
+    padding: 0 0.4em;
+    border: 1px solid var(--color-txt);
+    transition: .3s;
+    margin: 0 0.4em;
+    cursor: pointer;
+}
+
+.btn-inline:hover {
+    --btn-background: var(--color-txt);
+    --btn-color: var(--color-bg);
+}
+
+.btn-icon {
+    color: white;
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    border: 2px solid var(--btn-color);
+    background-color: var(--btn-color);
+    transition: .2s;
+}
+
+.btn-icon:disabled {
+    --btn-color: var(--color-neutral-lighter);
+}
+
+.btn-icon:hover {
+    color: var(--btn-color);
+    background-color: white;
+}
+
+.btn-icon::before,
+.btn-icon::after {
+    position: absolute;
+    width: 100%;
+    line-height: 50px;
+    left: 0;
+    transition: .3s;
+}
+
+.btn-icon:hover::after,
+.btn-icon::before {
+    top: -2px;
+}
+
+.btn-icon:hover::before {
+    top: -48px;
+}
+
+.btn-icon::after {
+    font-size: 20px;
+    content: attr(data-label);
+    top: 52px;
+}
+
+.btn-icon[disabled]::after {
+    content: attr(data-disabled);
+}
+
+.btn-light {
+    --btn-color: var(--color-prim-light);
+}
+
+.btn-lighter {
+    --btn-color: var(--color-prim-lighter);
+}
+
+.btn-attention {
+    --btn-color: var(--color-sec-lighter);
+}
+
+.btn-full {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#loading {
+    --size: 80px;
+    --radius: 30px;
+    --weight: 10px;
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 10px;
+    background-color: var(--color-prim);
+    margin: calc((100vh - var(--size)) / 2) calc((100vw - var(--size)) / 2);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading {
+    filter: opacity(.4);
+}
+
+.spinner {
+    position: relative;
+    top: calc((var(--radius) + var(--weight)) / -2);
+    left: calc((var(--radius) + var(--weight)) / -2);
+}
+
+.spinner::before,
+.spinner::after {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    border-radius: 50%;
+    width: var(--radius);
+    height: var(--radius);
+}
+
+.spinner::before {
+    background-image: conic-gradient(transparent, transparent 25%, white);
+    animation: rotate .6s infinite linear;
+    top: 3px;
+    left: 5px;
+}
+
+.spinner::after {
+    --radius-sm: calc(var(--radius) - var(--weight));
+    width: var(--radius-sm);
+    height: var(--radius-sm);
+    top: calc(var(--weight) / 2 + 3px);
+    left: calc(var(--weight) / 2 + 5px);
+    background-color: var(--color-prim);
+    border-radius: 50%;
+}
+
+@supports not (background-image: conic-gradient(transparent, transparent 25%, white))
+{
+    .spinner::before {
+        box-sizing: border-box;
+        border-style: solid;
+        border-color: white;
+        border-right-color: transparent;
+        border-width: 3px 3px 0 3px;
+    }
+}
+
+.tex {
+    font-family: Times, serif;
+}
+
+.tex > .e {
+    position: relative;
+    top: .2em;
+}
+
+.checkbox-cursor {
+    display: inline-block;
+    width: 44px;
+    height: 20px;
+    border: 1px solid var(--color-neutral);
+    border-radius: 20px;
+    position: relative;
+    transition-duration: .4s;
+}
+
+.checkbox-cursor::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #d0d0d1;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition-duration: inherit;
+}
+
+:checked + .checkbox-cursor {
+    background-color: var(--color-prim-lighter);
+    border-color: var(--color-prim-lighter);
+}
+
+:checked + .checkbox-cursor::before {
+    left: calc(100% - 16px - 2px);
+    background-color: var(--color-prim-darker);
+}
+
+.help {
+    font-style: italic;
+    font-size: .75em;
+    color: var(--color-neutral);
+}
+
+div.help,
+p.help {
+    margin: .4em;
+}
+
+.help > a {
+    color: var(--color-prim-dark);
+    font-weight: bold;
+}
+
+/* select */
+.k-select {
+    position: relative;
+    display: inline-block;
+}
+
+.k-select-options {
+    --color: var(--color-prim-lighter);
+    color: var(--color);
+    position: absolute;
+    background-color: white;
+    border: 1px solid;
+    left: 10px;
+    top: calc(100% + 14px);
+    border-radius: 6px;
+    z-index: 999;
+}
+
+.k-select-options::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-bottom-color: currentColor;
+    position: absolute;
+    top: -20px;
+    left: 10px;
+}
+
+.k-select-option {
+    white-space: nowrap;
+    padding: 0.3em .4em 0.3em 1.7em;
+}
+
+.k-select-option-disabled {
+    color: grey;
+    opacity: .6;
+    cursor: auto;
+}
+
+.k-select-option.icon-ok {
+    font-weight: bold;
+    color: white;
+    padding-left: 0.4em;
+    background-color: var(--color);
+}
+
+.k-select-option.icon-ok::before {
+    margin-right: .2em;
+}
+
+.file-name {
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+.file-name-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: right;
+}
+
+.input-text {
+    border: 1px solid var(--color-prim);
+    padding: 5px;
+    border-radius: 3px;
+}

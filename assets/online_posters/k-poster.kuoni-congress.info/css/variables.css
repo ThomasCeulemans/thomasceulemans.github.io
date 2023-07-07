@@ -1,0 +1,42 @@
+html {
+
+    /* primary color */
+    --color-prim: #215083;
+    --color-prim-dark: #1A3F67;
+    --color-prim-darker: #143150;
+    --color-prim-light: #28619F;
+    --color-prim-lighter: #357CC8;
+    --color-prim-alpha: #357cc929;
+
+    /* secondary color */
+    --color-sec: #671126;
+    --color-sec-dark: #4A0C1B;
+    --color-sec-darker: #310812;
+    --color-sec-light: #7A112B;
+    --color-sec-lighter: #9F2140;
+
+    /* color neutral */
+    --color-neutral: #9B9B9B;
+    --color-neutral-dark: #7C7C7C;
+    --color-neutral-darker: #646464;
+    --color-neutral-light: #B4B4B4;
+    --color-neutral-lighter: #C7C7C7;
+    --color-neutral-lighter-2: #ECECEC;
+
+    /* color poster status */
+    --color-status-draft: #E8D41D;
+    --color-status-public: #06C826;
+    --color-status-private: #E6720D;
+    --color-status-onsite: #E60DE6;
+
+    /* various colors */
+
+
+    /* lengths */
+    --main-margin: 10vw;
+}
+
+@keyframes rotate {
+    from {transform: RotateZ(0deg)}
+    to {transform: RotateZ(360deg)}
+}

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Magritte, a 3D NTLE line radiative transfer code for imaging the circumstellar environment</title>
+
+    <link rel="stylesheet" href="../../css/init.css">
+    <link rel="stylesheet" href="../../css/icons.css">
+    <link rel="stylesheet" href="../../css/icons-codes.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+
+        <link rel="stylesheet" href="../../css/poster.css">
+    <link rel="stylesheet" href="../../css/txt-reset.css">
+    <link rel="stylesheet" href="../../css/blocks.css">
+            <link rel="stylesheet" href="../../css/poster-visitor-action.css">
+        <link rel="stylesheet" href="../../css/message.css">
+    
+
+
+                <meta property="og:title" content="Magritte, a 3D NTLE line radiative transfer code for imaging the circumstellar environment">
+        <meta property="og:description" content="EAS 2023 K-Poster®">
+        <meta property="og:url" content="https://k-poster.kuoni-congress.info/eas-2023/poster/d804a159-a57e-495b-8c22-ac60f8626adb">
+                    <meta property="og:image" content="https://k-poster.kuoni-congress.info/storage/poster/eas-2023/d804a159-a57e-495b-8c22-ac60f8626adb/thumbnail.png">
+                <meta id="csrf-token" name="csrf-token" content="AW5f0Lw8QtkjKBw60vJNuHZ03xYCpxJDb7cMfRib">
+    <link rel="icon" type="image/png" href="https://k-poster.kuoni-congress.info/img/favicon.png">
+
+</head>
+
+<body style="--color1:#144774;--color2:#f9cf74;--color3:#9e7c35;--color4:#154774;--color5:#ffffff;"  class=visitor-actions-open>
+
+    
+    <header id="poster-header" class="popup expandable-article">
+    <div id="poster-header-content">
+        <header id="poster-header-container">
+                            <img class="poster-header-side poster-header-side-left" src="../../storage/poster/eas-2023/d804a159-a57e-495b-8c22-ac60f8626adb/image/original/fwokul_logos.png" alt="">
+                        <div id="poster-header-title-container">
+                <h1 id="poster-header-title"> Magritte, a 3D NTLE line radiative transfer code for imaging the circumstellar environment</h1>
+                <p id="poster-header-authors">
+                                                                    <span class="author author-presenter">Thomas&nbsp;Ceulemans</span>&nbsp;<sup>1</sup>
+                                    </p>
+            </div>
+                            <img class="poster-header-side  poster-header-side-right" src="../../storage/poster/eas-2023/d804a159-a57e-495b-8c22-ac60f8626adb/image/original/foto_thomas.png" alt="">
+                    </header>
+                    <section id="poster-details">
+                <ul id="poster-details-affiliations">
+                                            <li>
+                            <sup>1</sup>
+                            Ku Leuven
+                        </li>
+                                    </ul>
+                <div id="poster-details-abstract">
+                    <h2 id="poster-details-abstract-label">Abstract</h2>
+                    <div>A central question in astrophysics pertains the origin of the chemical enrichment of the universe.<br />
+It is generally hypothesized that a major part of the chemical species originate from the circumstellar environment of stars. As the stars eject matter, it cools down in the circumstellar environment, allowing interesting chemistry to happen.<br />
+A wealth of different types of circumstellar environments have been observed, ranging from protoplanetary disks to wild AGB outflows. In all these regions, complex interactions between chemistry, hydrodynamics and radiation transfer take place. In order to properly understand the interactions, we need to model them. To compare these modeling efforts with actual images of astrophysical objects, accurate radiative transfer computations are required. To aid in these radiative transfer modeling efforts, we are continuing to develop Magritte, an open-source 3D line radiative transfer library. To ensure the performance of Magritte, the library has been written in c++. For ease of use, we support a simple python API. In this talk, we show how to apply Magritte to general models in order to generate synthetic spectra. To show the flexibility of Magritte, we compute synthetic spectra of two types of hydrodynamics models: particle-based and grid-based.<br />
+<br />
+To summarize: The circumstellar environment is an important source of the chemical enrichment of the universe. In this talk, we use the line radiative transfer code Magritte to generate synthetic spectra from hydrodynamics models of the circumstellar environment, allowing us to compare these models to actual observations.</div>
+                </div>
+            </section>
+        
+    </div>
+    <show-more class="show-more btn-show-more icon-expand-article"></show-more>
+</header>
+
+    <article style="--color-title-bg:#f9cf74;--color-bg:#9e7c35;--color-title:#154774;--color-txt:#ffffff;--radius:0;--color-progress:#15477438;--col_start:1;--col_span:2;--row_start:2;--row_span:2;" class="popup article expandable-article hide-title">
+                <h2 class="article-title">Magritte</h2>
+        <div class="article-body">
+            <div class="article-blocks-wrapper">
+                <div class="article-blocks">
+                                                                                                <div class="block block-image" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure " style="--img-width: 50%; --align: center">
+            <img class="block-media-figure-media light-box-enable  media-auto-fit" src="../../storage/poster/eas-2023/d804a159-a57e-495b-8c22-ac60f8626adb/image/original/magritte_logo_white.png" loading="lazy">
+            <figcaption class="block-media-figcaption"></figcaption>
+        </figure>
+                                
+                            </div>
+                                                    <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><p><strong>Magritte</strong> is an <strong>open-source 3D NLTE line radiative transfer</strong> library. The basics of radiative transfer is given by the radiative transfer equation; the intensity in a specific direction changes because of material emitting or absorbing energy.</p></div>
+                                
+                            </div>
+                                                    <div class="block block-latex" style="grid-column: span 12/ auto">
+                                                                                                        <div class='latex-wrapper'><mathjax-latex class='rendering-latex icon-latex icon-after-spin'>\hat{\boldsymbol{n}}\cdot \nabla I(x,\nu)=\eta(x,\nu)-\chi(x,\nu) I(x,\nu)</mathjax-latex></div>
+                                
+                            </div>
+                                                    <div class="block block-latex" style="grid-column: span 12/ auto">
+                                                                                                        <div class='latex-wrapper'><mathjax-latex class='rendering-latex icon-latex icon-after-spin'>\text{In which } \hat{\boldsymbol{n}} \text{ is the direction, } I \text{ is the monochromatic specific intensity, } \eta \text{ is the total emissivity and } \chi \text{ is the total opacity.}</mathjax-latex></div>
+                                
+                            </div>
+                                                    <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><p>In line radiative transfer, a sharp frequency dependence is introduced, as light will be admitted/absorbed at specific frequencies, corresponding to energy transitions.</p></div>
+                                
+                            </div>
+                                                    <div class="block block-latex" style="grid-column: span 12/ auto">
+                                                                                                        <div class='latex-wrapper'><mathjax-latex class='rendering-latex icon-latex icon-after-spin'>\eta_{ij}(x,\nu)=\frac{h\nu}{4\pi}n_i(x)A_{ij}\phi_{ij}(x, \nu)</mathjax-latex></div>
+                                
+                            </div>
+                                                    <div class="block block-latex" style="grid-column: span 12/ auto">
+                                                                                                        <div class='latex-wrapper'><mathjax-latex class='rendering-latex icon-latex icon-after-spin'>\chi_{ij}(x,\nu)=\frac{h\nu}{4\pi}\left(n_j(x)B_{ji}-n_i(x)B_{ij}\right)\phi_{ij}(x, \nu)</mathjax-latex></div>
+                                
+                            </div>
+                                                    <div class="block block-latex" style="grid-column: span 12/ auto">
+                                                                                                        <div class='latex-wrapper'><mathjax-latex class='rendering-latex icon-latex icon-after-spin'>\text{In which } \chi_{ij} \text{ is the line opacity, } \eta_{ij} \text{ is the line emissivity, } n_i \text{ are the populations of energy level i, } A_{ij}, B_{ij}, B_{ji} \text{ are the Einstein coefficients and } \phi_{ij} \text{ is the line profile function.}</mathjax-latex></div>
+                                
+                            </div>
+                                                    <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><p>In NLTE (non local thermodynamical equilibrium) radiative transfer, the radiation field influences the level populations n<sub>i </sub>as prescribed by the static equilibrium equations. </p></div>
+                                
+                            </div>
+                                                    <div class="block block-latex" style="grid-column: span 12/ auto">
+                                                                                                        <div class='latex-wrapper'><mathjax-latex class='rendering-latex icon-latex icon-after-spin'>\sum_{j<i} \left(n_iA_{ij}-(n_jB_{ji}-n_iB_{ij})J_{ij}\right)\nonumber\\
+-\sum_{j>i} \left(n_jA_{ji}-(n_iB_{ij}-n_jB_{ji})J_{ij}\right)\nonumber\\
++\sum_{j=1}^N \left(n_iC_{ij}-n_jC_{ji}\right)=0</mathjax-latex></div>
+                                
+                            </div>
+                                                    <div class="block block-latex" style="grid-column: span 12/ auto">
+                                                                                                        <div class='latex-wrapper'><mathjax-latex class='rendering-latex icon-latex icon-after-spin'>\text{In which the mean line intensity } J_{ij} \text{ is given by } J_{ij}(\boldsymbol{x})=\oint_{\Omega}\int_0^{+\infty} I(\hat{\boldsymbol{n}},\boldsymbol{x},\nu)\phi_{ij}(\nu)\text{d}\Omega \text{d}\nu \text{.}</mathjax-latex></div>
+                                
+                            </div>
+                                                    <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><p>An iterative process is thus required for NLTE line radiative transfer computations, as the intensity field influences the level populations n<sub>i</sub> which influences the opacities/emissivities used for computing the intensity.</p></div>
+                                
+                            </div>
+                                                    <div class="block block-heading" style="grid-column: span 12/ auto">
+                                                                                                                <div class="block-heading txt-reset heading-size-normal" style="; ; text-align: left"><p>Features</p></div>
+                                
+                            </div>
+                                                    <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><ul>
+<li>Python api</li>
+<li>Online documentation</li>
+<li>Written in C++ for performance</li>
+<li>Automated testing procedure</li>
+</ul>
+<p>&nbsp;</p></div>
+                                
+                            </div>
+                                                    <div class="block block-heading" style="grid-column: span 12/ auto">
+                                                                                                                <div class="block-heading txt-reset heading-size-normal" style="; ; text-align: left"><p>Novel computational improvements</p></div>
+                                
+                            </div>
+                                                    <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><ul>
+<li>Computing optical depths in high velocity gradients</li>
+<li>Adaptive Ng acceleration</li>
+</ul></div>
+                                
+                            </div>
+                                                            </div>
+            </div>
+                    </div>
+        <show-more class="show-more btn-show-more icon-expand-article"></show-more>
+    </article>
+    <article style="--color-title-bg:#f9cf74;--color-bg:#9e7c35;--color-title:#154774;--color-txt:#ffffff;--radius:0;--color-progress:#15477438;--col_start:3;--col_span:1;--row_start:5;--row_span:1;" class="popup article expandable-article ">
+                <h2 class="article-title">Github repository</h2>
+        <div class="article-body">
+            <div class="article-blocks-wrapper">
+                <div class="article-blocks">
+                                                                                                <div class="block block-image" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure " style="--img-width: 43%; --align: center">
+            <img class="block-media-figure-media light-box-enable  media-auto-fit" src="../../storage/poster/eas-2023/d804a159-a57e-495b-8c22-ac60f8626adb/image/original/qrmagritterepo.png" loading="lazy">
+            <figcaption class="block-media-figcaption"></figcaption>
+        </figure>
+                                
+                            </div>
+                                                            </div>
+            </div>
+                    </div>
+        <show-more class="show-more btn-show-more icon-expand-article"></show-more>
+    </article>
+    <article style="--color-title-bg:#f9cf74;--color-bg:#9e7c35;--color-title:#154774;--color-txt:#ffffff;--radius:0;--color-progress:#15477438;--col_start:4;--col_span:1;--row_start:5;--row_span:1;" class="popup article expandable-article ">
+                <h2 class="article-title">Documentation</h2>
+        <div class="article-body">
+            <div class="article-blocks-wrapper">
+                <div class="article-blocks">
+                                                                                                <div class="block block-image" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure " style="--img-width: 43%; --align: center">
+            <img class="block-media-figure-media light-box-enable  media-auto-fit" src="../../storage/poster/eas-2023/d804a159-a57e-495b-8c22-ac60f8626adb/image/original/magritte_docs.png" loading="lazy">
+            <figcaption class="block-media-figcaption"></figcaption>
+        </figure>
+                                
+                            </div>
+                                                            </div>
+            </div>
+                    </div>
+        <show-more class="show-more btn-show-more icon-expand-article"></show-more>
+    </article>
+    <article style="--color-title-bg:#f9cf74;--color-bg:#9e7c35;--color-title:#154774;--color-txt:#ffffff;--radius:0;--color-progress:#15477438;--col_start:1;--col_span:2;--row_start:4;--row_span:2;" class="popup article expandable-article ">
+                <h2 class="article-title">Optical depths in large velocity gradients</h2>
+        <div class="article-body">
+            <div class="article-blocks-wrapper">
+                <div class="article-blocks">
+                                                                                                <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><p>Most discretizations of the radiative transfer equation use optical depths 𝜏, which are computed by numerically integrating the opacity over a distance increment &Delta;x. The optical depth increment &Delta;𝜏(𝜈) on a small segment given by a single line at a specific frequency 𝜈 is then given by</p></div>
+                                
+                            </div>
+                                                    <div class="block block-latex" style="grid-column: span 12/ auto">
+                                                                                                        <div class='latex-wrapper'><mathjax-latex class='rendering-latex icon-latex icon-after-spin'>\Delta \tau(\nu) = \int_0^{\Delta x} \chi_{ij}(x,\nu) dx</mathjax-latex></div>
+                                
+                            </div>
+                                                    <div class="block block-latex" style="grid-column: span 12/ auto">
+                                                                                                        <div class='latex-wrapper'><mathjax-latex class='rendering-latex icon-latex icon-after-spin'>\text{In which } \chi \text{ is the opacity, which depends on the line profile function } \phi \text{.}</mathjax-latex></div>
+                                
+                            </div>
+                                                    <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><p>For <strong>small velocity gradients</strong>, it is sufficient to use the <strong>trapezoidal rule</strong> to discretize the integral. However, for <strong>larger velocity gradients</strong>, this discretization might be too coarse and can result in <strong>missing the peak of the line profile function</strong>, as illustrated in the figure below.</p></div>
+                                
+                            </div>
+                                                    <div class="block block-image" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure " style="--img-width: 100%; --align: center">
+            <img class="block-media-figure-media light-box-enable  media-auto-fit" src="../../storage/poster/eas-2023/d804a159-a57e-495b-8c22-ac60f8626adb/image/original/gaussian_integration_diffs_cropped.png" loading="lazy">
+            <figcaption class="block-media-figcaption"></figcaption>
+        </figure>
+                                
+                            </div>
+                                                    <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><p>To avoid this issue, one can either split the discretization into more parts or one can exploit knowledge about the shape of the line profile function.</p>
+<p>If we assume the shape of the line profile to be gaussian (similar derivations can be done for other shapes), we can <strong>split the opacity</strong> into a slowly varying part without the line profile &chi;̅ and the line profile function ϕ. We put the slowly varying part outside the integral and analytically integrate the line profile function to obtain</p></div>
+                                
+                            </div>
+                                                    <div class="block block-latex" style="grid-column: span 12/ auto">
+                                                                                                        <div class='latex-wrapper'><mathjax-latex class='rendering-latex icon-latex icon-after-spin'>\Delta\tau(\nu)=\Delta x\left(\frac{\overline{\chi}_{ij}(x_0)+\overline{\chi}_{ij}(x_1)}{2}\right)\left(\frac{\text{Erf}(f(x_1))-\text{Erf}(f(x_0))}{2\Delta\nu}\right)</mathjax-latex></div>
+                                
+                            </div>
+                                                    <div class="block block-latex" style="grid-column: span 12/ auto">
+                                                                                                        <div class='latex-wrapper'><mathjax-latex class='rendering-latex icon-latex icon-after-spin'>\text{In which } \Delta x = x_1 - x_0 \text{ is the position increment, } f(x)= \frac{\nu-\nu_l(x)}{\delta \nu} \text{ is the dimensionless line frequency, for which } \nu_l \text{ is the line frequency, } \delta\nu \text{ is the line width and } \Delta \nu \text{ is the frequency difference.}</mathjax-latex></div>
+                                
+                            </div>
+                                                            </div>
+            </div>
+                    </div>
+        <show-more class="show-more btn-show-more icon-expand-article"></show-more>
+    </article>
+    <article style="--color-title-bg:#f9cf74;--color-bg:#9e7c35;--color-title:#154774;--color-txt:#ffffff;--radius:0;--color-progress:#15477438;--col_start:5;--col_span:2;--row_start:2;--row_span:1;" class="popup article expandable-article ">
+                <h2 class="article-title">Use cases of Magritte</h2>
+        <div class="article-body">
+            <div class="article-blocks-wrapper">
+                <div class="article-blocks">
+                                                                                                <div class="block block-heading" style="grid-column: span 12/ auto">
+                                                                                                                <div class="block-heading txt-reset heading-size-large" style="; ; text-align: left"><p>Creating Magritte models: SPH</p></div>
+                                
+                            </div>
+                                                    <div class="block block-pdf" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure ">
+                <img class="block-media-figure-media block-pdf-preview media-auto-fit" src="../../storage/poster/eas-2023/d804a159-a57e-495b-8c22-ac60f8626adb/pdf/thumb/notebook3.jpg" data-pdf="/storage/poster/eas-2023/d804a159-a57e-495b-8c22-ac60f8626adb/pdf/original/notebook3.pdf" loading="lazy" is="pdf-preview">
+            <figcaption class="block-media-figcaption"></figcaption>
+        </figure>
+                                
+                            </div>
+                                                    <div class="block block-heading" style="grid-column: span 12/ auto">
+                                                                                                                <div class="block-heading txt-reset heading-size-large" style="; ; text-align: left"><p>Creating Magritte models: Adaptive Mesh Refinement</p></div>
+                                
+                            </div>
+                                                    <div class="block block-pdf" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure ">
+                <img class="block-media-figure-media block-pdf-preview media-auto-fit" src="../../storage/poster/eas-2023/d804a159-a57e-495b-8c22-ac60f8626adb/pdf/thumb/notebook1.jpg" data-pdf="/storage/poster/eas-2023/d804a159-a57e-495b-8c22-ac60f8626adb/pdf/original/notebook1.pdf" loading="lazy" is="pdf-preview">
+            <figcaption class="block-media-figcaption"></figcaption>
+        </figure>
+                                
+                            </div>
+                                                    <div class="block block-heading" style="grid-column: span 12/ auto">
+                                                                                                                <div class="block-heading txt-reset heading-size-large" style="; ; text-align: left"><p>Synthetic observations</p></div>
+                                
+                            </div>
+                                                    <div class="block block-pdf" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure ">
+                <img class="block-media-figure-media block-pdf-preview media-auto-fit" src="../../storage/poster/eas-2023/d804a159-a57e-495b-8c22-ac60f8626adb/pdf/thumb/notebook5-1.jpg" data-pdf="/storage/poster/eas-2023/d804a159-a57e-495b-8c22-ac60f8626adb/pdf/original/notebook5-1.pdf" loading="lazy" is="pdf-preview">
+            <figcaption class="block-media-figcaption"></figcaption>
+        </figure>
+                                
+                            </div>
+                                                            </div>
+            </div>
+                    </div>
+        <show-more class="show-more btn-show-more icon-expand-article"></show-more>
+    </article>
+    <article style="--color-title-bg:#f9cf74;--color-bg:#9e7c35;--color-title:#154774;--color-txt:#ffffff;--radius:0;--color-progress:#15477438;--col_start:3;--col_span:1;--row_start:4;--row_span:1;" class="popup article expandable-article ">
+                <h2 class="article-title">Future work</h2>
+        <div class="article-body">
+            <div class="article-blocks-wrapper">
+                <div class="article-blocks">
+                                                                                                <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><p>3D line radiative transfer is computationally expensive. Thus we will implement GPU computing, making use of machine learning libraries.</p>
+<ul>
+<li>Widespread support for accelerators (GPU's, ...)</li>
+<li>Allows for sensitivity analysis using the computed gradients</li>
+</ul></div>
+                                
+                            </div>
+                                                            </div>
+            </div>
+                    </div>
+        <show-more class="show-more btn-show-more icon-expand-article"></show-more>
+    </article>
+    <article style="--color-title-bg:#f9cf74;--color-bg:#9e7c35;--color-title:#154774;--color-txt:#ffffff;--radius:0;--color-progress:#15477438;--col_start:3;--col_span:2;--row_start:2;--row_span:2;" class="popup article expandable-article ">
+                <h2 class="article-title">Adaptive Ng acceleration</h2>
+        <div class="article-body">
+            <div class="article-blocks-wrapper">
+                <div class="article-blocks">
+                                                                                                <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><p>To compute line radiative transfer self-consistently, an iterative procedure is required. This procedure can be accelerated by using the linear extrapolation procedure known as <strong>Ng-acceleration</strong> (Ng 1974). The general idea is use data (e.g. level populations) from the <strong>N previous iterations to extrapolate</strong> the results.</p>
+<p>However, the <strong>optimal value</strong> for this hyperparameter N <strong>is model dependent</strong>. To help with this choice, we introduce <strong>adaptive Ng acceleration</strong>. Instead of using a fixed amount of iterations N, we can <strong>allow the acceleration step to happen earlier</strong> based on whether the accelerated data converges faster than the non-accelerated results. As the extrapolated data no longer changes significantly, it is no longer useful to add an extra regular step before extrapolating.</p>
+<p>To illustrate the effect of adaptive Ng-acceleration, we used the Van Zadelhoff benchmarks (1D spherically symmetric collapsing cloud ; van Zadelhoff et al. 2002) to compare the adaptive Ng acceleration scheme with default Ng acceleration. We have plotted the convergence behavior in the figures below. For a given value of the hyperparameter N, <strong>adaptive Ng-acceleration results in similar or better convergence behavior</strong> compared to default Ng-acceleration.</p>
+<p>&nbsp;</p></div>
+                                
+                            </div>
+                                                    <div class="block block-image" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure block-media-figure-position position-bottom" style="--img-width: 100%; --align: center">
+            <img class="block-media-figure-media light-box-enable  media-auto-fit" src="../../storage/poster/eas-2023/d804a159-a57e-495b-8c22-ac60f8626adb/image/original/ng_accel_comparison_adaptive_default_vanzadelhoff_1a_1d_multiple_memlims_remove_n_its_0-230605-123515.png" loading="lazy">
+            <figcaption class="block-media-figcaption"><p>Convergence results for the optically thin Van Zadelhoff 1a model. The dashed lines correspond to regular Ng acceleration, while the dotted lines correspond to adaptive Ng acceleration with the specified maximal number of steps in between extrapolation.</p></figcaption>
+        </figure>
+                                
+                            </div>
+                                                    <div class="block block-image" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure block-media-figure-position position-bottom" style="--img-width: 100%; --align: center">
+            <img class="block-media-figure-media light-box-enable  media-auto-fit" src="../../storage/poster/eas-2023/d804a159-a57e-495b-8c22-ac60f8626adb/image/original/ng_accel_comparison_adaptive_default_vanzadelhoff_1b_1d_multiple_memlims_remove_n_its_0-230605-120133.png" loading="lazy">
+            <figcaption class="block-media-figcaption"><p>Convergence results for the optically thick Van Zadelhoff 1b model. The dashed lines correspond to regular Ng acceleration, while the dotted lines correspond to adaptive Ng acceleration with the specified maximal number of steps in between extrapolation.</p></figcaption>
+        </figure>
+                                
+                            </div>
+                                                            </div>
+            </div>
+                    </div>
+        <show-more class="show-more btn-show-more icon-expand-article"></show-more>
+    </article>
+    <article style="--color-title-bg:#f9cf74;--color-bg:#9e7c35;--color-title:#154774;--color-txt:#ffffff;--radius:0;--color-progress:#15477438;--col_start:4;--col_span:1;--row_start:4;--row_span:1;" class="popup article expandable-article ">
+                <h2 class="article-title">Personal webpage</h2>
+        <div class="article-body">
+            <div class="article-blocks-wrapper">
+                <div class="article-blocks">
+                                                                                                <div class="block block-image" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure " style="--img-width: 43%; --align: center">
+            <img class="block-media-figure-media light-box-enable  media-auto-fit" src="../../storage/poster/eas-2023/d804a159-a57e-495b-8c22-ac60f8626adb/image/original/qrpersonalwebsite.png" loading="lazy">
+            <figcaption class="block-media-figcaption"></figcaption>
+        </figure>
+                                
+                            </div>
+                                                            </div>
+            </div>
+                    </div>
+        <show-more class="show-more btn-show-more icon-expand-article"></show-more>
+    </article>
+    <article style="--color-title-bg:#f9cf74;--color-bg:#9e7c35;--color-title:#154774;--color-txt:#ffffff;--radius:0;--color-progress:#15477438;--col_start:5;--col_span:2;--row_start:3;--row_span:3;" class="popup article expandable-article ">
+                <h2 class="article-title">Synthetic observations with Magritte</h2>
+        <div class="article-body">
+            <div class="article-blocks-wrapper">
+                <div class="article-blocks">
+                                                                                                <div class="block block-video" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-media-figure-position position-bottom">
+            <video class="block-media-figure-media media-auto-fit" src="../../storage/poster/eas-2023/d804a159-a57e-495b-8c22-ac60f8626adb/video/movie.webm" loading="lazy" controls preload="metadata"></video>
+            <figcaption class="block-media-figcaption"><p>Synthetic observation of an AMRVAC hydrodynamics model by Jan Bolte.</p></figcaption>
+        </figure>
+                                
+                            </div>
+                                                            </div>
+            </div>
+                    </div>
+        <show-more class="show-more btn-show-more icon-expand-article"></show-more>
+    </article>
+
+    <overlay-articles id="overlay" class="overlay icon-fold-article"></overlay-articles>
+            <ul id="visitor-action">
+                        <li class="visitor-action" id="visitor-action-contact-author">Contact Author</li>
+        <li class="visitor-action visitor-sub-action">
+            <span class="visitor-sub-action-title">Share</span>
+            <ul class="visitor-sub-action-list">
+                <li id="visitor-action-share-twitter" class="visitor-sub-action-item icon-twitter"></li>
+                <li id="visitor-action-share-message" class="visitor-sub-action-item icon-message"></li>
+                <li id="visitor-action-share-ink" class="visitor-sub-action-item icon-link"></li>
+            </ul>
+        </li>
+                            <li class="visitor-action vistor-action-no">NO scheduled presentation</li>
+            </ul>
+
+    <form action="https://k-poster.kuoni-congress.info/api/messages" id="contact-author-form" class="visitor-form">
+        <div class="visitor-form-wrapper">
+            <input type="hidden" name="poster_id" value="d804a159-a57e-495b-8c22-ac60f8626adb">
+            <label for="contact-author-name">Vour name <small>(optional)</small></label>
+            <input type="text" id="contact-author-name" name="from_name" class="contact-author-input" placeholder="Jane Doe">
+            <label for="contact-author-email">Your email address <small>(optional)</small></label>
+            <input type="text" id="contact-author-email" name="from_email" class="contact-author-input" placeholder="janedoe@gamil.com">
+            <label for="contact-author-message">Your message to the author <small>(required)</small></label>
+            <textarea required id="contact-author-message" name="message" class="contact-author-textarea" row="5" placeholder="Your poster is great!"></textarea>
+            <p class="visitor-form-btns">
+                <button type="reset" class="btn-icon btn-dark icon-cancel" data-label="Cancel"></button>
+                <button type="submit" class="btn-icon btn-light icon-next" data-label="Send"></button>
+            </p>
+        </div>
+    </form>
+
+    <form action="https://k-poster.kuoni-congress.info/api/share-url" id="share-message-form" class="visitor-form">
+        <div class="visitor-form-wrapper">
+            <input type="hidden" name="posterId" value="d804a159-a57e-495b-8c22-ac60f8626adb">
+            <label for="share-message-email">Your email address <small>(required)</small></label>
+            <input required type="text" id="share-message-email" name="to" class="contact-author-input" placeholder="janedoe@gamil.com">
+            <label for="share-message-message">A message <small>(optional)</small></label>
+            <textarea id="share-message-message" name="additional_msg" class="contact-author-textarea" row="5" placeholder="I'm sending you this poster's URL because…"></textarea>
+            <p class="visitor-form-btns">
+                <button type="reset" class="btn-icon btn-dark icon-cancel" data-label="Cancel"></button>
+                <button type="submit" class="btn-icon btn-light icon-next" data-label="Send"></button>
+            </p>
+        </div>
+    </form>
+    
+        <script>
+        const event = {"id":"02E8CD92-1D9A-46DE-AA23-34875D680450","name":"EAS 2023","code":"eas-2023","memory":100000000,"import_params":{"types":["234497AD-24EB-2542-40AF-3A084142D65F"],"status":["FC3CAFD1-6196-44CD-9ADB-11A8AA3672DD","F6EA257F-A00C-4294-8D7A-672E2040F21B","7D77AF00-B4C8-4B50-B9A9-A6D43B24C45E","69CBE4AC-561E-400C-BB7A-AA2C1B2C785C"],"document":"Abstract"},"filtre_EA":"null","head":"\u003C!--Start of Tawk.to Script--\u003E\r\n\u003Cscript type=\u0022text\/javascript\u0022\u003E\r\nvar Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();\r\n(function(){\r\nvar s1=document.createElement(\u0022script\u0022),s0=document.getElementsByTagName(\u0022script\u0022)[0];\r\ns1.async=true;\r\ns1.src=\u0027https:\/\/embed.tawk.to\/60ad7bddbbd5354c0fdc1dc0\/1f6iqnmcb\u0027;\r\ns1.charset=\u0027UTF-8\u0027;\r\ns1.setAttribute(\u0027crossorigin\u0027,\u0027*\u0027);\r\ns0.parentNode.insertBefore(s1,s0);\r\n})();\r\n\u003C\/script\u003E\r\n\u003C!--End of Tawk.to Script--\u003E","theme":"{\u0022color1\u0022:\u0022#144774\u0022,\u0022color2\u0022:\u0022#f9cf74\u0022,\u0022color3\u0022:\u0022#9e7c35\u0022,\u0022color4\u0022:\u0022#154774\u0022,\u0022color5\u0022:\u0022#ffffff\u0022}","twitter_hashtag":"#EAS2023","submission":"","secretariat":"eas2023@kuonitumlare.com","virtual":0,"onsite_password":null,"is_offline":0,"offline":"","created_at":"2023-06-14 09:02:03","updated_at":"2023-06-14 09:02:03"};
+    </script>
+
+    <script src="../../js/prototype.js"></script>
+    
+    <script src="../../js/webcomponent.js"></script>
+                        <script>
+                const presentations = {"live":{"id":null,"end":"00:31:31"},"sessions":[]};
+            </script>
+            <script src="../../js/poster-public.js"></script>
+            
+    <script type="text/javascript" id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+            <script src="../../js/message.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,42 @@
+.message {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: .2rem 2rem;
+    border-radius: 4px;
+    opacity: 1;
+    transition: .4s;
+    min-width: 20vw;
+    box-shadow: 1px 1px 16px #6666;
+    z-index: 999;
+}
+
+.message-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.message-info {
+    background-color: #007bff;
+    color: white;
+}
+
+.message-warning {
+    background-color: #ffc107;
+    color: #343a40;
+}
+
+.message-error {
+    background-color: #dc3545;
+    color: white;
+}
+
+.message-start {
+    opacity: 0;
+    transform: translateX(calc(100% + 1rem));
+}
+
+.message-end {
+    opacity: 0;
+    transform: translateX(-100vw);
+}

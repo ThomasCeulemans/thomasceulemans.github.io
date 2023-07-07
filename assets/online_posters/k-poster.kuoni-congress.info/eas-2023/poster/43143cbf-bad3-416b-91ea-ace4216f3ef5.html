@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A novel, numerically stable co-moving method to speed up line radiative transfer.</title>
+
+    <link rel="stylesheet" href="../../css/init.css">
+    <link rel="stylesheet" href="../../css/icons.css">
+    <link rel="stylesheet" href="../../css/icons-codes.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+
+        <link rel="stylesheet" href="../../css/poster.css">
+    <link rel="stylesheet" href="../../css/txt-reset.css">
+    <link rel="stylesheet" href="../../css/blocks.css">
+            <link rel="stylesheet" href="../../css/poster-visitor-action.css">
+        <link rel="stylesheet" href="../../css/message.css">
+    
+
+
+                <meta property="og:title" content="A novel, numerically stable co-moving method to speed up line radiative transfer.">
+        <meta property="og:description" content="EAS 2023 K-Poster®">
+        <meta property="og:url" content="https://k-poster.kuoni-congress.info/eas-2023/poster/43143cbf-bad3-416b-91ea-ace4216f3ef5">
+                    <meta property="og:image" content="https://k-poster.kuoni-congress.info/storage/poster/eas-2023/43143cbf-bad3-416b-91ea-ace4216f3ef5/thumbnail.png">
+                <meta id="csrf-token" name="csrf-token" content="lR7yLx36v4URwtJ7byT44qYPSsf5kL9PVrcvl7gy">
+    <link rel="icon" type="image/png" href="https://k-poster.kuoni-congress.info/img/favicon.png">
+
+</head>
+
+<body style="--color1:#144774;--color2:#f9cf74;--color3:#9e7c35;--color4:#154774;--color5:#ffffff;"  class=visitor-actions-open>
+
+    
+    <header id="poster-header" class="popup expandable-article">
+    <div id="poster-header-content">
+        <header id="poster-header-container">
+                            <img class="poster-header-side poster-header-side-left" src="../../storage/poster/eas-2023/43143cbf-bad3-416b-91ea-ace4216f3ef5/image/original/fwokul_logos.png" alt="">
+                        <div id="poster-header-title-container">
+                <h1 id="poster-header-title"> A novel, numerically stable co-moving method to speed up line radiative transfer.</h1>
+                <p id="poster-header-authors">
+                                                                    <span class="author author-presenter">Thomas&nbsp;Ceulemans</span>&nbsp;<sup>1</sup>
+                                    </p>
+            </div>
+                            <img class="poster-header-side  poster-header-side-right" src="../../storage/poster/eas-2023/43143cbf-bad3-416b-91ea-ace4216f3ef5/image/original/foto_thomas.png" alt="">
+                    </header>
+                    <section id="poster-details">
+                <ul id="poster-details-affiliations">
+                                            <li>
+                            <sup>1</sup>
+                            Ku Leuven, Leuven
+                        </li>
+                                    </ul>
+                <div id="poster-details-abstract">
+                    <h2 id="poster-details-abstract-label">Abstract</h2>
+                    <div>In Asymptotic Giant Branch (AGB) stars, complex morphologies of the stellar winds have been observed. These can be modelled using hydrodynamical simulations. In order to bridge the gap from hydrodynamical simulations towards observations, radiative transfer modelling is required. As light interacts with the circumstellar matter, observations will contain information about the chemical composition, geometry and hydrodynamical properties of the stellar wind. <br />
+<br />
+It is well known that Doppler shifts will shift the frequencies at which spectral lines appear. However, from a computational point of view, this provides a challenge for non-local thermodynamical equilibrium (NLTE) line radiative transfer as this requires the intensities around the line centers to be computed self-consistently with the properties of the medium.<br />
+<br />
+The line radiative transfer code MAGRITTE computes intensities using rays traced throughout a 3D model. Traditionally, the radiative transfer equation is solved using a fixed frequency discretisation around the line centers. Due to Doppler shifts, this discretisation changes for each point on the ray. This weighs heavily on the computation time, as the frequencies for which one needs to compute the intensity are not aligned. As 3D radiative transfer calculations are computationally challenging even today, reducing the amount of computation time is paramount.<br />
+<br />
+By using a numerically stable modification of the radiative transfer equation, we have rewritten the radiative transfer equation in order to cope with Doppler shifts. In this manner, we can shift the frequency for which we compute the intensity during the computation. As a result, we are able to reduce the number of frequencies at each point for which one needs to compute the intensity by following the Doppler shift on the ray. To stabilise the numerical algorithm, we introduce a novel and intuitive insight into numerical mathematics.<br />
+<br />
+In order to show the effectiveness of the new algorithm, we apply it to 3D hydrodynamical models, comparing it to established radiative transfer algorithms. In particular, we test the solver using PHANTOM hydrodynamical simulations of AGB binary systems. These AGB models exhibit a complex velocity field, which is handled by an accurate implementation of boundary conditions in frequency space, enabling it to handle non-monotonic velocity gradients on a ray. The speedup obtained from the new solver brings us closer to being able to include consistently radiative line cooling in hydrodynamical simulations, instead of radiative transfer only being used to post-process these hydrodynamical models.</div>
+                </div>
+            </section>
+        
+    </div>
+    <show-more class="show-more btn-show-more icon-expand-article"></show-more>
+</header>
+
+    <article style="--color-title-bg:#f9cf74;--color-bg:#9e7c35;--color-title:#154774;--color-txt:#ffffff;--radius:0;--color-progress:#15477438;--col_start:1;--col_span:2;--row_start:2;--row_span:3;" class="popup article expandable-article ">
+                <h2 class="article-title">Co-moving method</h2>
+        <div class="article-body">
+            <div class="article-blocks-wrapper">
+                <div class="article-blocks">
+                                                                                                <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><p>In line radiative transfer, <strong>the intensity</strong> at a specific frequency <strong>changes</strong> when that frequency is <strong>in the neighborhoud of an atomic/molecular line</strong>. <strong>Due to Doppler shifts, this region moves</strong> in frequency space if the velocity changes.</p>
+<p>Using the default <strong>radiative transfer</strong> equation on a ray,</p></div>
+                                
+                            </div>
+                                                    <div class="block block-latex" style="grid-column: span 12/ auto">
+                                                                                                        <div class='latex-wrapper'><mathjax-latex class='rendering-latex icon-latex icon-after-spin'>\frac{\partial I(x,\nu)}{\partial x}=\eta(x,\nu)-\chi(x,\nu) I(x,\nu)</mathjax-latex></div>
+                                
+                            </div>
+                                                    <div class="block block-latex" style="grid-column: span 12/ auto">
+                                                                                                        <div class='latex-wrapper'><mathjax-latex class='rendering-latex icon-latex icon-after-spin'>\text{In which } I \text{ is the intensity, } \eta \text{ is the emissivity, } \chi \text{ is the opacity, } x \text{ is the position and } \nu \text{ is the frequency.}</mathjax-latex></div>
+                                
+                            </div>
+                                                    <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><p>does not allow for a change in the frequency 𝜈. Thus computation time will be spent computing intensities in frequency regions where the intensity does not significantly change.</p>
+<p>For computational efficiency, we propose <strong>a slight alteration of the radiative transfer equation</strong>.</p></div>
+                                
+                            </div>
+                                                    <div class="block block-latex" style="grid-column: span 12/ auto">
+                                                                                                        <div class='latex-wrapper'><mathjax-latex class='rendering-latex icon-latex icon-after-spin'>\frac{d I(x,\nu)}{d x}=\eta(x,\nu)-\chi(x,\nu) I(x,\nu) \boldsymbol{+ \frac{d\nu}{dx}\frac{\partial I}{\partial \nu}(x,\nu)}</mathjax-latex></div>
+                                
+                            </div>
+                                                    <div class="block block-latex" style="grid-column: span 12/ auto">
+                                                                                                        <div class='latex-wrapper'><mathjax-latex class='rendering-latex icon-latex icon-after-spin'>\text{In which } I \text{ is the intensity, } \eta \text{ is the emissivity, } \chi \text{ is the opacity, } x \text{ is the position and } \nu \text{ is the frequency.}</mathjax-latex></div>
+                                
+                            </div>
+                                                    <div class="block block-text" style="grid-column: span 12/ auto">
+                                
+                            </div>
+                                                    <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><p>This formulation <strong>allows for a change in frequency</strong> when solving this equation.</p>
+<p>I exploit this feature in <strong>two applications</strong>:</p>
+<ul>
+<li>Computing NLTE intensities for line radiative transfer: The radiative properties of the medium depend on the radiation field at frequencies near the (Doppler shifted) line frequencies.</li>
+<li>Imaging models with non-monotonic velocity gradients: Both a wide frequency range and a fine frequency distribution is required for the line profile.</li>
+</ul></div>
+                                
+                            </div>
+                                                    <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><p>This comoving description of the radiative transfer equation similar to Baron &amp; Hauschildt 2004 (and others in the same series). This poster adds the following <strong>improvements</strong>:</p>
+<ul>
+<li>A novel way to <strong>stabilize the equations</strong></li>
+<li>Implementation of <strong>accurate boundary conditions</strong> which support non-monotonic velocity gradients</li>
+</ul></div>
+                                
+                            </div>
+                                                            </div>
+            </div>
+                    </div>
+        <show-more class="show-more btn-show-more icon-expand-article"></show-more>
+    </article>
+    <article style="--color-title-bg:#f9cf74;--color-bg:#9e7c35;--color-title:#154774;--color-txt:#ffffff;--radius:0;--color-progress:#15477438;--col_start:3;--col_span:3;--row_start:2;--row_span:2;" class="popup article expandable-article ">
+                <h2 class="article-title">Numerical stability</h2>
+        <div class="article-body">
+            <div class="article-blocks-wrapper">
+                <div class="article-blocks">
+                                                                                                <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><p style="text-align: left;">The core idea of this section can be summarized in the following statement: extrapolation causes numerical issues.</p></div>
+                                
+                            </div>
+                                                    <div class="block block-latex" style="grid-column: span 12/ auto">
+                                                                                                        <div class='latex-wrapper'><mathjax-latex class='rendering-latex icon-latex icon-after-spin'>\text{To practically use the comoving solver, we need to define the change in frequency } \nu(x) \text{.}</mathjax-latex></div>
+                                
+                            </div>
+                                                    <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><p>As the interesting frequency regions for line radiative transfer lie around the Doppler shifted line centers, an initial idea is for the frequencies to follow the Doppler shift, as illustrated in the figure on the right.</p></div>
+                                
+                            </div>
+                                                    <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><p>For line radiative transfer, we want to resolve details around the line center, thus a fine frequency binning is required. This configuration causes numerical issues when encountering velocity gradients:</p></div>
+                                
+                            </div>
+                                                    <div class="block block-latex" style="grid-column: span 12/ auto">
+                                                                                                        <div class='latex-wrapper'><mathjax-latex class='rendering-latex icon-latex icon-after-spin'>\text{We need to compute a frequency derivative term }\frac{dI}{d\nu} \text{. If the frequency binning is too fine, or the velocity gradient too large, numerical issues appear.}</mathjax-latex></div>
+                                
+                            </div>
+                                                    <div class="block block-image" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure block-media-figure-position position-bottom" style="--img-width: 100%; --align: center">
+            <img class="block-media-figure-media light-box-enable  media-auto-fit" src="../../storage/poster/eas-2023/43143cbf-bad3-416b-91ea-ace4216f3ef5/image/original/moving_oscillatory_instablity_freq_match_stability.png" loading="lazy">
+            <figcaption class="block-media-figcaption"><p>A 1D example of the differences between the default and the stabilized comoving solver. The model has an equidistant frequency discretization, a constant velocity gradient, a constant source function S = 1, and constant opacity &chi; = 1.</p></figcaption>
+        </figure>
+                                
+                            </div>
+                                                    <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><p>Instead of letting the frequency change match the Doppler shift, we minimize the frequency difference.This stabilizes the solver, as the frequency derivative is no longer extrapolated.</p></div>
+                                
+                            </div>
+                                                            </div>
+            </div>
+                    </div>
+        <show-more class="show-more btn-show-more icon-expand-article"></show-more>
+    </article>
+    <article style="--color-title-bg:#f9cf74;--color-bg:#9e7c35;--color-title:#154774;--color-txt:#ffffff;--radius:0;--color-progress:#15477438;--col_start:4;--col_span:2;--row_start:4;--row_span:2;" class="popup article expandable-article ">
+                <h2 class="article-title">Application: NLTE radiative transfer</h2>
+        <div class="article-body">
+            <div class="article-blocks-wrapper">
+                <div class="article-blocks">
+                                                                                                <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><p>In 3D NLTE line radiative transfer, the radiation field itself impacts the properties of the medium. This requires an iterative procedure computing mean line intensities J(x).</p></div>
+                                
+                            </div>
+                                                    <div class="block block-latex" style="grid-column: span 12/ auto">
+                                                                                                        <div class='latex-wrapper'><mathjax-latex class='rendering-latex icon-latex icon-after-spin'>J_{ij}(\boldsymbol{x})=\oint_{\Omega}\int_0^{+\infty} I(\hat{\boldsymbol{n}},\boldsymbol{x},\nu)\phi_{ij}(\nu)\text{d}\Omega \text{d}\nu</mathjax-latex></div>
+                                
+                            </div>
+                                                    <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><p>We compare the required computation time for a single NLTE iteration by applying it to a Phantom model (Malfait et al. 2021).</p>
+<ul>
+<li>Feautrier: standard feautrier solver (Feautrier 1964), as implemented in Magritte</li>
+<li>Comoving (non-local bdy): Comoving method, using an accurate implementation of the boundary conditions in frequency space</li>
+<li>Comoving (local bdy): Comoving method, using blackbody intensities everywhere for the boundary conditions in frequency space (simplifies implementation)</li>
+</ul></div>
+                                
+                            </div>
+                                                    <div class="block block-image" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure " style="--img-width: 50%; --align: center">
+            <img class="block-media-figure-media light-box-enable  media-auto-fit" src="../../storage/poster/eas-2023/43143cbf-bad3-416b-91ea-ace4216f3ef5/image/original/table_comoving_nlte_comparision.png" loading="lazy">
+            <figcaption class="block-media-figcaption"></figcaption>
+        </figure>
+                                
+                            </div>
+                                                    <div class="block block-image" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure " style="--img-width: 50%; --align: center">
+            <img class="block-media-figure-media light-box-enable  media-auto-fit" src="../../storage/poster/eas-2023/43143cbf-bad3-416b-91ea-ace4216f3ef5/image/original/wind_model_original_reldiffs_comoving.jpg" loading="lazy">
+            <figcaption class="block-media-figcaption"></figcaption>
+        </figure>
+                                
+                            </div>
+                                                    <div class="block block-image" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure block-media-figure-position position-bottom" style="--img-width: 100%; --align: center">
+            <img class="block-media-figure-media light-box-enable  media-auto-fit" src="../../storage/poster/eas-2023/43143cbf-bad3-416b-91ea-ace4216f3ef5/image/original/wind_model_density_mesh_original.jpg" loading="lazy">
+            <figcaption class="block-media-figcaption"><p>Slice plot of the Phantom binary wind model by Malfait et al. 2021</p></figcaption>
+        </figure>
+                                
+                            </div>
+                                                            </div>
+            </div>
+                    </div>
+        <show-more class="show-more btn-show-more icon-expand-article"></show-more>
+    </article>
+    <article style="--color-title-bg:#f9cf74;--color-bg:#9e7c35;--color-title:#154774;--color-txt:#ffffff;--radius:0;--color-progress:#15477438;--col_start:6;--col_span:1;--row_start:4;--row_span:2;" class="popup article expandable-article ">
+                <h2 class="article-title">Application: Imaging</h2>
+        <div class="article-body">
+            <div class="article-blocks-wrapper">
+                <div class="article-blocks">
+                                                                                                <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><p>In regions with large velocity gradients, the resulting line profile is wide in frequency space. <strong>For detailed line radiative transfer</strong>, this implies that <strong>a fine frequency discretization is required</strong> to properly resolve the line profile.</p>
+<p>When using a <strong>static solver</strong> (for which the frequency does not change), the required <strong>computation</strong> <strong>time will scale linearly</strong> with the amount of requested frequencies in the synthetic observation. This wastes some computation power, as every static frequency only lies close to a line center for a close part of the model, due to large velocity gradients resulting in significant Doppler shift.</p>
+<p>Using the <strong>comoving solver</strong>, we first <strong>compute intensities</strong> with a fine frequency grid <strong>around the Doppler shifted line centers</strong>. Afterwards, the computed intensities are interpolated, correctly taking into account the boundary conditions. and correctly interpolated. In this way, the amount of frequencies requested for the line profile has no impact on the computation time.</p>
+<p>We <strong>apply</strong> this <strong>to a 2D AMRVAC model </strong>(Moens et al. 2022, Debnat et al. in prep) of a Wolf-Rayet wind <strong>with highly non-monotonic velocity gradients</strong>.</p></div>
+                                
+                            </div>
+                                                    <div class="block block-image" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure block-media-figure-position position-bottom" style="--img-width: 100%; --align: center">
+            <img class="block-media-figure-media light-box-enable  media-auto-fit" src="../../storage/poster/eas-2023/43143cbf-bad3-416b-91ea-ace4216f3ef5/image/original/comoving_feautrier_comparison.png" loading="lazy">
+            <figcaption class="block-media-figcaption"><p>Synthetic line profile of the CO 1-0 line of the WR model, comparing the new comoving method with the established Feautrier method. The comoving method agrees with the Feautrier method, albeit the line profile is smoothed out.</p></figcaption>
+        </figure>
+                                
+                            </div>
+                                                    <div class="block block-image" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure block-media-figure-position position-bottom" style="--img-width: 100%; --align: center">
+            <img class="block-media-figure-media light-box-enable  media-auto-fit" src="../../storage/poster/eas-2023/43143cbf-bad3-416b-91ea-ace4216f3ef5/image/original/velocity_profile.png" loading="lazy">
+            <figcaption class="block-media-figcaption"><p>The highly non-monotonic velocity profile of the 2D WR AMRVAC model.</p></figcaption>
+        </figure>
+                                
+                            </div>
+                                                    <div class="block block-image" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure block-media-figure-position position-bottom" style="--img-width: 100%; --align: center">
+            <img class="block-media-figure-media light-box-enable  media-auto-fit" src="../../storage/poster/eas-2023/43143cbf-bad3-416b-91ea-ace4216f3ef5/image/original/density_profile.png" loading="lazy">
+            <figcaption class="block-media-figcaption"><p>Density profile of the 2D WR AMRVAC model.</p></figcaption>
+        </figure>
+                                
+                            </div>
+                                                    <div class="block block-image" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure block-media-figure-position position-bottom" style="--img-width: 100%; --align: center">
+            <img class="block-media-figure-media light-box-enable  media-auto-fit" src="../../storage/poster/eas-2023/43143cbf-bad3-416b-91ea-ace4216f3ef5/image/original/temperature_profile.png" loading="lazy">
+            <figcaption class="block-media-figcaption"><p>Temperature profile of the 2D WR AMRVAC model.</p></figcaption>
+        </figure>
+                                
+                            </div>
+                                                            </div>
+            </div>
+                    </div>
+        <show-more class="show-more btn-show-more icon-expand-article"></show-more>
+    </article>
+    <article style="--color-title-bg:#f9cf74;--color-bg:#9e7c35;--color-title:#154774;--color-txt:#ffffff;--radius:0;--color-progress:#15477438;--col_start:3;--col_span:1;--row_start:4;--row_span:2;" class="popup article expandable-article ">
+                <h2 class="article-title">Boundary conditions</h2>
+        <div class="article-body">
+            <div class="article-blocks-wrapper">
+                <div class="article-blocks">
+                                                                                                <div class="block block-image" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure " style="--img-width: 100%; --align: center">
+            <img class="block-media-figure-media light-box-enable  media-auto-fit" src="../../storage/poster/eas-2023/43143cbf-bad3-416b-91ea-ace4216f3ef5/image/original/boundary_conditions.png" loading="lazy">
+            <figcaption class="block-media-figcaption"></figcaption>
+        </figure>
+                                
+                            </div>
+                                                    <div class="block block-text" style="grid-column: span 12/ auto">
+                                                                                                        <div class="txt-reset"><span class='narration-shadow'></span><p>When using the comoving solver for line radiative transfer, one requires boundary conditions not only in position space (at the start of a ray), but also in frequency space. This is because Doppler shifts change the relevant frequency range for which the intensity should be computed.</p>
+<p>If one encounters a specific frequency range for the first time, blackbody intensities are sufficient as boundary condition. However, any subsequent time that frequency range is needed, we have to use the previously computed intensities at that frequency.</p>
+<p>For more details, come talk to me at the conference.</p></div>
+                                
+                            </div>
+                                                            </div>
+            </div>
+                    </div>
+        <show-more class="show-more btn-show-more icon-expand-article"></show-more>
+    </article>
+    <article style="--color-title-bg:#f9cf74;--color-bg:#9e7c35;--color-title:#154774;--color-txt:#ffffff;--radius:0;--color-progress:#15477438;--col_start:6;--col_span:1;--row_start:2;--row_span:2;" class="popup article expandable-article ">
+                <h2 class="article-title">Choosing 𝜈(x)</h2>
+        <div class="article-body">
+            <div class="article-blocks-wrapper">
+                <div class="article-blocks">
+                                                                                                <div class="block block-image" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure block-media-figure-position position-bottom" style="--img-width: 100%; --align: center">
+            <img class="block-media-figure-media light-box-enable  media-auto-fit" src="../../storage/poster/eas-2023/43143cbf-bad3-416b-91ea-ace4216f3ef5/image/original/moving_freq_illustration_poster.png" loading="lazy">
+            <figcaption class="block-media-figcaption"><p>Solid line: static; dashed line: following Doppler shift; dotted line: minimal frequency differences</p></figcaption>
+        </figure>
+                                
+                            </div>
+                                                            </div>
+            </div>
+                    </div>
+        <show-more class="show-more btn-show-more icon-expand-article"></show-more>
+    </article>
+    <article style="--color-title-bg:#f9cf74;--color-bg:#9e7c35;--color-title:#154774;--color-txt:#ffffff;--radius:0;--color-progress:#15477438;--col_start:2;--col_span:1;--row_start:5;--row_span:1;" class="popup article expandable-article ">
+                <h2 class="article-title">Check out the radiative transfer code Magritte</h2>
+        <div class="article-body">
+            <div class="article-blocks-wrapper">
+                <div class="article-blocks">
+                                                                                                <div class="block block-image" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure " style="--img-width: 50%; --align: center">
+            <img class="block-media-figure-media light-box-enable  media-auto-fit" src="../../storage/poster/eas-2023/43143cbf-bad3-416b-91ea-ace4216f3ef5/image/original/qrmagrittekposter-1.png" loading="lazy">
+            <figcaption class="block-media-figcaption"></figcaption>
+        </figure>
+                                
+                            </div>
+                                                            </div>
+            </div>
+                    </div>
+        <show-more class="show-more btn-show-more icon-expand-article"></show-more>
+    </article>
+    <article style="--color-title-bg:#f9cf74;--color-bg:#9e7c35;--color-title:#154774;--color-txt:#ffffff;--radius:0;--color-progress:#15477438;--col_start:1;--col_span:1;--row_start:5;--row_span:1;" class="popup article expandable-article ">
+                <h2 class="article-title">Personal website</h2>
+        <div class="article-body">
+            <div class="article-blocks-wrapper">
+                <div class="article-blocks">
+                                                                                                <div class="block block-image" style="grid-column: span 12/ auto">
+                                                                                                                <figure class="block-image-figure " style="--img-width: 43%; --align: center">
+            <img class="block-media-figure-media light-box-enable  media-auto-fit" src="../../storage/poster/eas-2023/43143cbf-bad3-416b-91ea-ace4216f3ef5/image/original/qrpersonalwebsite.png" loading="lazy">
+            <figcaption class="block-media-figcaption"></figcaption>
+        </figure>
+                                
+                            </div>
+                                                            </div>
+            </div>
+                    </div>
+        <show-more class="show-more btn-show-more icon-expand-article"></show-more>
+    </article>
+
+    <overlay-articles id="overlay" class="overlay icon-fold-article"></overlay-articles>
+            <ul id="visitor-action">
+                        <li class="visitor-action" id="visitor-action-contact-author">Contact Author</li>
+        <li class="visitor-action visitor-sub-action">
+            <span class="visitor-sub-action-title">Share</span>
+            <ul class="visitor-sub-action-list">
+                <li id="visitor-action-share-twitter" class="visitor-sub-action-item icon-twitter"></li>
+                <li id="visitor-action-share-message" class="visitor-sub-action-item icon-message"></li>
+                <li id="visitor-action-share-ink" class="visitor-sub-action-item icon-link"></li>
+            </ul>
+        </li>
+                            <li class="visitor-action vistor-action-no">NO scheduled presentation</li>
+            </ul>
+
+    <form action="https://k-poster.kuoni-congress.info/api/messages" id="contact-author-form" class="visitor-form">
+        <div class="visitor-form-wrapper">
+            <input type="hidden" name="poster_id" value="43143cbf-bad3-416b-91ea-ace4216f3ef5">
+            <label for="contact-author-name">Vour name <small>(optional)</small></label>
+            <input type="text" id="contact-author-name" name="from_name" class="contact-author-input" placeholder="Jane Doe">
+            <label for="contact-author-email">Your email address <small>(optional)</small></label>
+            <input type="text" id="contact-author-email" name="from_email" class="contact-author-input" placeholder="janedoe@gamil.com">
+            <label for="contact-author-message">Your message to the author <small>(required)</small></label>
+            <textarea required id="contact-author-message" name="message" class="contact-author-textarea" row="5" placeholder="Your poster is great!"></textarea>
+            <p class="visitor-form-btns">
+                <button type="reset" class="btn-icon btn-dark icon-cancel" data-label="Cancel"></button>
+                <button type="submit" class="btn-icon btn-light icon-next" data-label="Send"></button>
+            </p>
+        </div>
+    </form>
+
+    <form action="https://k-poster.kuoni-congress.info/api/share-url" id="share-message-form" class="visitor-form">
+        <div class="visitor-form-wrapper">
+            <input type="hidden" name="posterId" value="43143cbf-bad3-416b-91ea-ace4216f3ef5">
+            <label for="share-message-email">Your email address <small>(required)</small></label>
+            <input required type="text" id="share-message-email" name="to" class="contact-author-input" placeholder="janedoe@gamil.com">
+            <label for="share-message-message">A message <small>(optional)</small></label>
+            <textarea id="share-message-message" name="additional_msg" class="contact-author-textarea" row="5" placeholder="I'm sending you this poster's URL because…"></textarea>
+            <p class="visitor-form-btns">
+                <button type="reset" class="btn-icon btn-dark icon-cancel" data-label="Cancel"></button>
+                <button type="submit" class="btn-icon btn-light icon-next" data-label="Send"></button>
+            </p>
+        </div>
+    </form>
+    
+        <script>
+        const event = {"id":"02E8CD92-1D9A-46DE-AA23-34875D680450","name":"EAS 2023","code":"eas-2023","memory":100000000,"import_params":{"types":["234497AD-24EB-2542-40AF-3A084142D65F"],"status":["FC3CAFD1-6196-44CD-9ADB-11A8AA3672DD","F6EA257F-A00C-4294-8D7A-672E2040F21B","7D77AF00-B4C8-4B50-B9A9-A6D43B24C45E","69CBE4AC-561E-400C-BB7A-AA2C1B2C785C"],"document":"Abstract"},"filtre_EA":"null","head":"\u003C!--Start of Tawk.to Script--\u003E\r\n\u003Cscript type=\u0022text\/javascript\u0022\u003E\r\nvar Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();\r\n(function(){\r\nvar s1=document.createElement(\u0022script\u0022),s0=document.getElementsByTagName(\u0022script\u0022)[0];\r\ns1.async=true;\r\ns1.src=\u0027https:\/\/embed.tawk.to\/60ad7bddbbd5354c0fdc1dc0\/1f6iqnmcb\u0027;\r\ns1.charset=\u0027UTF-8\u0027;\r\ns1.setAttribute(\u0027crossorigin\u0027,\u0027*\u0027);\r\ns0.parentNode.insertBefore(s1,s0);\r\n})();\r\n\u003C\/script\u003E\r\n\u003C!--End of Tawk.to Script--\u003E","theme":"{\u0022color1\u0022:\u0022#144774\u0022,\u0022color2\u0022:\u0022#f9cf74\u0022,\u0022color3\u0022:\u0022#9e7c35\u0022,\u0022color4\u0022:\u0022#154774\u0022,\u0022color5\u0022:\u0022#ffffff\u0022}","twitter_hashtag":"#EAS2023","submission":"","secretariat":"eas2023@kuonitumlare.com","virtual":0,"onsite_password":null,"is_offline":0,"offline":"","created_at":"2023-06-14 09:02:03","updated_at":"2023-06-14 09:02:03"};
+    </script>
+
+    <script src="../../js/prototype.js"></script>
+    
+    <script src="../../js/webcomponent.js"></script>
+                        <script>
+                const presentations = {"live":{"id":null,"end":"00:35:26"},"sessions":[]};
+            </script>
+            <script src="../../js/poster-public.js"></script>
+            
+    <script type="text/javascript" id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+            <script src="../../js/message.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,62 @@
+body {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 60px 1fr 70px;
+}
+
+#header {
+    background-color: var(--color-prim-lighter);
+    color: white;
+    padding: 0 var(--main-margin);
+}
+
+#app-name {
+    font-size: 30px;
+    flex-grow: 1;
+}
+
+#main {
+    overflow: auto;
+}
+
+/**
+* Kuoni Footer
+ */
+#klogo {
+    display: block;
+    width: 180px;
+    margin: 30px 0 10px var(--main-margin);
+}
+
+#kbanner {
+    height: 5px;
+    display: flex;
+}
+
+#kbanner-darkgrey {
+    flex-grow: 1;
+    flex-basis: 40%;
+    background-color: #636365;
+}
+
+#kbanner-blue {
+    flex-grow: 1;
+    flex-basis: 15%;
+    background-color: #28367a;
+}
+
+#kbanner-red {
+    flex-grow: 1;
+    flex-basis: 15%;
+    background-color: #a01c4a;
+}
+
+#kbanner-lightgrey {
+    flex-grow: 1;
+    flex-basis: 30%;
+    background-color: #cfcdd0;
+}
+
+#kuoni-footer {
+    border-top: 2px solid var(--color-neutral-lighter);
+}

@@ -31,7 +31,7 @@
       year: 2021-now
       description:
         - Working on the numerical implementation of radiative transfer.
-        - "Goal: To enable line radiative cooling in (M)HD simulations of stars."
+        - "Goal: To enable line radiative cooling in (M)HD simulations of stars, with uncertainties."
 
 - title: Open Source Projects
   type: time_table
@@ -39,6 +39,9 @@
     - title: <a href="https://github.com/Magritte-code/Magritte">Magritte</a>
       year: 2021-now
       description: An open-source line radiative transfer library
+    - title: <a href="https://github.com/Magritte-code/Magritte-torch">Magritte-torch</a>
+      year: 2023-now
+      description: A GPU compatible open-source line radiative transfer library, allowing for uncertainty analysis.
 
 - title: Awards
   type: time_table
